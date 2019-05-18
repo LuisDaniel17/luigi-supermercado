@@ -1,16 +1,21 @@
 
 package luigi.s_supermercado;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import luigi.s_supermercado.dao.SupermercadoDao;
+import luigi.s_supermercado.modelo.Produto;
 
 public class Cadastro_produto extends javax.swing.JFrame {
 
     public Cadastro_produto() {
+
         initComponents();
     }
     
     public void Limpar_Campos(){
-    TxtIdProduto.setText("");
+    TxtIdProduto.setText("0");
     TxtDescProduto.setText("");
     TxtLoteProduto.setText("");
     TxtPrecoProduto.setText("");
@@ -18,10 +23,12 @@ public class Cadastro_produto extends javax.swing.JFrame {
     TxtValorLucro.setText("");
     TxtdtFabricacao.setText("");
     TxtdtValidade.setText("");
-    LblTotal.setText("");
+    LblTotal.setText("0");
     TxtIdProduto.requestFocus();
    }
-
+    
+SupermercadoDao s = new SupermercadoDao();    
+Produto p = new Produto();
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,6 +69,8 @@ public class Cadastro_produto extends javax.swing.JFrame {
         BtnSair2 = new javax.swing.JButton();
         BtnCadastrar2 = new javax.swing.JButton();
         BtnLimpar2 = new javax.swing.JButton();
+        BtnSomar = new javax.swing.JButton();
+        BtnVoltar = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(7, 7, 7, 7, new java.awt.Color(102, 255, 204)));
@@ -192,6 +201,7 @@ public class Cadastro_produto extends javax.swing.JFrame {
 
         LblTotal.setBackground(new java.awt.Color(255, 255, 255));
         LblTotal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        LblTotal.setText("0");
         LblTotal.setBorder(javax.swing.BorderFactory.createMatteBorder(7, 7, 7, 7, new java.awt.Color(0, 153, 153)));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,6 +210,11 @@ public class Cadastro_produto extends javax.swing.JFrame {
         BtnBuscar2.setBackground(new java.awt.Color(0, 255, 0));
         BtnBuscar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         BtnBuscar2.setText("Buscar");
+        BtnBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscar2ActionPerformed(evt);
+            }
+        });
 
         BtnAtualizar2.setBackground(new java.awt.Color(0, 51, 255));
         BtnAtualizar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -208,6 +223,11 @@ public class Cadastro_produto extends javax.swing.JFrame {
         BtnDeletar2.setBackground(new java.awt.Color(255, 0, 0));
         BtnDeletar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         BtnDeletar2.setText("Deletar");
+        BtnDeletar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeletar2ActionPerformed(evt);
+            }
+        });
 
         BtnSair2.setBackground(new java.awt.Color(255, 0, 0));
         BtnSair2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -273,16 +293,39 @@ public class Cadastro_produto extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
         );
 
+        BtnSomar.setBackground(new java.awt.Color(0, 153, 153));
+        BtnSomar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BtnSomar.setText("Somar");
+        BtnSomar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSomarActionPerformed(evt);
+            }
+        });
+
+        BtnVoltar.setBackground(new java.awt.Color(255, 102, 0));
+        BtnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BtnVoltar.setText("Voltar para a Home");
+        BtnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(312, 312, 312)
-                .addComponent(LblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(312, 312, 312)
+                                .addComponent(LblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(363, 363, 363)
+                                .addComponent(jLabel9)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,18 +343,21 @@ public class Cadastro_produto extends javax.swing.JFrame {
                                             .addComponent(TxtPrecoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                                             .addComponent(TxtdtFabricacao))))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
-                                        .addComponent(TxtLoteProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TxtLoteProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(31, 31, 31)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(TxtValorLucro, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                            .addComponent(TxtdtValidade))))
-                                .addGap(49, 49, 49))
+                                            .addComponent(TxtdtValidade))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(BtnSomar)
+                                        .addGap(14, 14, 14))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -326,15 +372,13 @@ public class Cadastro_produto extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addGap(264, 264, 264)
                                         .addComponent(jLabel8)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(366, 366, 366)
-                        .addComponent(jLabel9)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(313, 313, 313)
+                .addComponent(BtnVoltar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,19 +403,22 @@ public class Cadastro_produto extends javax.swing.JFrame {
                     .addComponent(TxtdtFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(TxtdtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(TxtPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(TxtValorLucro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(TxtValorLucro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSomar))
+                .addGap(33, 33, 33)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(LblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(BtnVoltar)
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -434,9 +481,9 @@ public class Cadastro_produto extends javax.swing.JFrame {
             return;
         }
         
-        int P;
+        Double P;
         try { 
-            P = Integer.parseInt(TxtPrecoProduto.getText());
+            P = Double.parseDouble(TxtPrecoProduto.getText());
         } 
         catch (NumberFormatException erro) { 
             JOptionPane.showMessageDialog(null, "Favor informar o valor do produto !!!"); 
@@ -444,16 +491,107 @@ public class Cadastro_produto extends javax.swing.JFrame {
             return; 
         } 
         
-        int V;
+        Double V;
         try { 
-            V = Integer.parseInt(TxtValorLucro.getText());
+            V = Double.parseDouble(TxtValorLucro.getText());
         } 
         catch (NumberFormatException erro) { 
             JOptionPane.showMessageDialog(null, "Favor informar o valor de lucro do produto !!!"); 
             TxtValorLucro.requestFocus();
             return; 
         } 
+        
+        int IDP;
+        IDP = Integer.parseInt(TxtIdProduto.getText());
+        p.setId_produto(IDP);
+        
+        String DP;
+        DP = TxtDescProduto.getText();
+        p.setDescricao(DP);
+        
+        double QP;
+        QP = Double.parseDouble(TxtQtdEstoqueProduto.getText());
+        p.setQtddisponivel(QP);
+        
+        String LP;
+        LP = TxtLoteProduto.getText();
+        p.setLote(LP);
+        
+        String DFP;
+        DFP = TxtdtFabricacao.getText();
+        p.setDtfabricacao(DFP);
+        
+        String DVP;
+        DVP = TxtdtValidade.getText();
+        p.setDtvalidade(DVP);
+        
+        double PCP;
+        PCP = Double.parseDouble(TxtPrecoProduto.getText());
+        p.setPreco_custo(PCP);
+        
+        double VLP;
+        VLP = Double.parseDouble(TxtValorLucro.getText());
+        p.setValor_lucro(VLP);
+        
+        double VTP;
+        VTP = Double.parseDouble(LblTotal.getText());
+        p.setValor_total(VTP);
+        
+                try {
+            s.adicionarp(p);
+            JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso !!!");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao adicionar produto !!!");
+            Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_BtnCadastrar2ActionPerformed
+
+    private void BtnSomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSomarActionPerformed
+        Double x,y,z,i;
+        x = Double.parseDouble(TxtPrecoProduto.getText());  
+        y = Double.parseDouble(TxtValorLucro.getText());
+        i = Double.parseDouble(LblTotal.getText());
+        z = x + y + i;
+        LblTotal.setText(String.valueOf(z));
+
+    }//GEN-LAST:event_BtnSomarActionPerformed
+
+    private void BtnBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscar2ActionPerformed
+        TxtIdProduto.setText(String.valueOf(p.getId_produto()));
+        TxtDescProduto.setText(p.getDescricao());
+        TxtQtdEstoqueProduto.setText(String.valueOf(p.getQtddisponivel()));
+        TxtLoteProduto.setText(p.getLote());
+        TxtdtFabricacao.setText(p.getDtfabricacao());
+        TxtdtValidade.setText(p.getDtvalidade());
+        TxtPrecoProduto.setText(String.valueOf(p.getPreco_custo()));
+        TxtValorLucro.setText(String.valueOf(p.getValor_lucro()));
+        LblTotal.setText(String.valueOf(p.getValor_total()));
+        
+        try {
+            s.buscarp(p);
+        } catch (Exception ex) {
+            Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BtnBuscar2ActionPerformed
+
+    private void BtnDeletar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletar2ActionPerformed
+        Produto ProdutoRemover = new Produto();
+        long id = Long.valueOf( TxtIdProduto.getText());
+        ProdutoRemover.setId_produto(id);
+        try {
+            s.removerp(ProdutoRemover);
+            JOptionPane.showMessageDialog(null, "Produto Deletado com sucesso !!!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao Deletar !!!");
+            Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BtnDeletar2ActionPerformed
+
+    private void BtnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVoltarActionPerformed
+        new Home().setVisible(true); this.dispose();
+    }//GEN-LAST:event_BtnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,6 +640,8 @@ public class Cadastro_produto extends javax.swing.JFrame {
     private javax.swing.JButton BtnLimpar2;
     private javax.swing.JButton BtnSair;
     private javax.swing.JButton BtnSair2;
+    private javax.swing.JButton BtnSomar;
+    private javax.swing.JButton BtnVoltar;
     private javax.swing.JLabel LblTotal;
     private javax.swing.JTextField TxtDescProduto;
     private javax.swing.JTextField TxtId;

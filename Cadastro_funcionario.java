@@ -1,46 +1,43 @@
-
 package luigi.s_supermercado;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import luigi.s_supermercado.dao.SupermercadoDao;
 import luigi.s_supermercado.modelo.Funcionario;
 
-
 public class Cadastro_funcionario extends javax.swing.JFrame {
-
 
     public Cadastro_funcionario() {
         initComponents();
     }
-    
-    public void Limpar_Campos(){
-    TxtIdFuncionario.setText("");
-    TxtNomeFuncionario.setText("");
-    TxtBairroFuncionario.setText("");
-    TxtCargoFuncionario.setText("");
-    TxtCelularFuncionario.setText("");
-    TxtCepFuncionario.setText("");
-    TxtCidadeFuncionario.setText("");
-    TxtComplementoFuncionario.setText("");
-    TxtCpfFuncionario.setText("");
-    TxtEmailFuncionario.setText("");
-    TxtLogradouroFuncionario.setText("");
-    TxtNumeroFuncionario.setText("");
-    TxtRgFuncionario.setText("");
-    TxtSalarioFuncionario.setText("");
-    TxtSetorFuncionario.setText("");
-    TxtTelefoneFuncionario.setText("");
-    TxtdtNascimentoFuncionario.setText("");
-    CboEstadoFuncionario.setSelectedIndex(-1);
-    GrpSexoFuncionario.clearSelection();
-    TxtIdFuncionario.requestFocus();
-    }
-    
-         SupermercadoDao s = new SupermercadoDao();
-         Funcionario f = new Funcionario();
 
+    public void Limpar_Campos() {
+        TxtIdFuncionario.setText("");
+        TxtNomeFuncionario.setText("");
+        TxtBairroFuncionario.setText("");
+        TxtCargoFuncionario.setText("");
+        TxtCelularFuncionario.setText("");
+        TxtCepFuncionario.setText("");
+        TxtCidadeFuncionario.setText("");
+        TxtComplementoFuncionario.setText("");
+        TxtCpfFuncionario.setText("");
+        TxtEmailFuncionario.setText("");
+        TxtLogradouroFuncionario.setText("");
+        TxtNumeroFuncionario.setText("");
+        TxtRgFuncionario.setText("");
+        TxtSalarioFuncionario.setText("");
+        TxtSetorFuncionario.setText("");
+        TxtTelefoneFuncionario.setText("");
+        TxtdtNascimentoFuncionario.setText("");
+        CboEstadoFuncionario.setSelectedIndex(-1);
+        GrpSexoFuncionario.clearSelection();
+        TxtIdFuncionario.requestFocus();
+    }
+
+    SupermercadoDao s = new SupermercadoDao();
+    Funcionario f = new Funcionario();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,6 +95,7 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
         TxtTelefoneFuncionario = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         TxtCelularFuncionario = new javax.swing.JTextField();
+        BtnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,7 +114,7 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(154, 154, 154)
                 .addComponent(jLabel1)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,6 +271,11 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
         BtnAtualizar.setBackground(new java.awt.Color(0, 0, 255));
         BtnAtualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         BtnAtualizar.setText("Atualizar");
+        BtnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAtualizarActionPerformed(evt);
+            }
+        });
 
         BtnDeletar.setBackground(new java.awt.Color(255, 0, 0));
         BtnDeletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -364,103 +367,121 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setText("Celular");
 
+        BtnVoltar.setBackground(new java.awt.Color(255, 102, 0));
+        BtnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BtnVoltar.setText("Voltar para a Home");
+        BtnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(TxtTelefoneFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel21)
-                                .addGap(18, 18, 18)
-                                .addComponent(TxtCelularFuncionario))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtEmailFuncionario))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtCpfFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtRgFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtdtNascimentoFuncionario))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TxtComplementoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel7))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TxtCidadeFuncionario)))
+                                        .addComponent(TxtEmailFuncionario))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TxtCpfFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TxtRgFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TxtdtNascimentoFuncionario))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(TxtComplementoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel7))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(TxtCidadeFuncionario)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(CboEstadoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(TxtCepFuncionario))
+                                            .addComponent(TxtBairroFuncionario)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TxtLogradouroFuncionario)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TxtNumeroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TxtIdFuncionario)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(TxtNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(343, 343, 343)
+                                        .addComponent(jLabel3)
+                                        .addGap(0, 400, Short.MAX_VALUE)))
+                                .addGap(22, 22, 22))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel17))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(CboEstadoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TxtSalarioFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TxtCargoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel19)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(TxtSetorFuncionario)
+                                        .addGap(28, 28, 28))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TxtTelefoneFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TxtCepFuncionario))
-                                    .addComponent(TxtBairroFuncionario)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtLogradouroFuncionario)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtNumeroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtIdFuncionario)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(TxtNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtSalarioFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtCargoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel19)
-                                .addGap(18, 18, 18)
-                                .addComponent(TxtSetorFuncionario))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(343, 343, 343)
-                                        .addComponent(jLabel3))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(187, 187, 187)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(22, 22, 22)))
+                                        .addComponent(jLabel21)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(TxtCelularFuncionario)
+                                        .addGap(34, 34, 34))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(BtnVoltar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,13 +530,13 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(TxtEmailFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(TxtTelefoneFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(TxtCelularFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(TxtSalarioFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -523,9 +544,11 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
                     .addComponent(TxtCargoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(TxtSetorFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(37, 37, 37)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(BtnVoltar)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -552,217 +575,333 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnLimparActionPerformed
 
     private void BtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarActionPerformed
-     int Id;
-        try { 
+        int Id;
+        try {
             Id = Integer.parseInt(TxtIdFuncionario.getText());
-        } 
-        catch (NumberFormatException erro) { 
-            JOptionPane.showMessageDialog(null, "Favor informar O ID válido para o funcionário !!!"); 
+        } catch (NumberFormatException erro) {
+            JOptionPane.showMessageDialog(null, "Favor informar O ID válido para o funcionário !!!");
             TxtIdFuncionario.requestFocus();
-            return; 
-        } 
-             
-        if(TxtNomeFuncionario.getText().equals("") ){
+            return;
+        }
+
+        if (TxtNomeFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o nome do funcionario !!!");
             TxtNomeFuncionario.requestFocus();
             return;
         }
-        if(TxtLogradouroFuncionario.getText().equals("") ){
+        if (TxtLogradouroFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o logradouro do funcionario !!!");
             TxtLogradouroFuncionario.requestFocus();
             return;
         }
-        if(TxtNumeroFuncionario.getText().equals("") ){
+        if (TxtNumeroFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o numero do funcionario !!!");
             TxtNumeroFuncionario.requestFocus();
             return;
         }
-        if(TxtBairroFuncionario.getText().equals("") ){
+        if (TxtBairroFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o bairro do funcionario !!!");
             TxtBairroFuncionario.requestFocus();
             return;
         }
-        if(TxtCidadeFuncionario.getText().equals("") ){
+        if (TxtCidadeFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar a cidade do funcionario !!!");
             TxtCidadeFuncionario.requestFocus();
             return;
         }
-                
-        if(TxtCepFuncionario.getText().equals("") ){
+
+        if (TxtCepFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o cep do funcionario !!!");
             TxtCepFuncionario.requestFocus();
             return;
         }
-       
-        if(TxtCpfFuncionario.getText().equals("") ){
+
+        if (TxtCpfFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o cpf do funcionario !!!");
             TxtCpfFuncionario.requestFocus();
             return;
         }
-        
-       if(TxtRgFuncionario.getText().equals("") ){
+
+        if (TxtRgFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o rg do funcionario !!!");
             TxtRgFuncionario.requestFocus();
             return;
         }
-         
-        if(TxtdtNascimentoFuncionario.getText().equals("") ){
+
+        if (TxtdtNascimentoFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar a data de nascimento do funcionario !!!");
             TxtdtNascimentoFuncionario.requestFocus();
             return;
         }
-        if(TxtEmailFuncionario.getText().equals("") ){
+        if (TxtEmailFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o email do funcionario !!!");
             TxtEmailFuncionario.requestFocus();
             return;
         }
-        if(TxtTelefoneFuncionario.getText().equals("") ){
+        if (TxtTelefoneFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o telefone do funcionario !!!");
             TxtTelefoneFuncionario.requestFocus();
             return;
         }
-        if(TxtCelularFuncionario.getText().equals("") ){
+        if (TxtCelularFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o celular do funcionario !!!");
             TxtCelularFuncionario.requestFocus();
             return;
         }
-        if(TxtCargoFuncionario.getText().equals("") ){
+        if (TxtCargoFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o cargo do funcionario !!!");
             TxtCargoFuncionario.requestFocus();
             return;
         }
-        if(TxtSetorFuncionario.getText().equals("") ){
+        if (TxtSetorFuncionario.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor informar o setor do funcionario !!!");
             TxtSetorFuncionario.requestFocus();
             return;
         }
-        int S;
-        try { 
-            S = Integer.parseInt(TxtSalarioFuncionario.getText());
-        } 
-        catch (NumberFormatException erro) { 
-            JOptionPane.showMessageDialog(null, "Favor informar um salário válido para o funcionário !!!"); 
+        Double S;
+        try {
+            S = Double.parseDouble(TxtSalarioFuncionario.getText());
+        } catch (NumberFormatException erro) {
+            JOptionPane.showMessageDialog(null, "Favor informar um salário válido para o funcionário !!!");
             TxtSalarioFuncionario.requestFocus();
-            return; 
-        } 
-     
-        
-         
-         
+            return;
+        }
 
-         
-         int IDF;
-         IDF = Integer.parseInt(TxtIdFuncionario.getText());
-         f.setId_funcionario(IDF);
-         
-         String NF;
-         NF = TxtNomeFuncionario.getText();
-         f.setNome(NF);
-         
-         String LF;
-         LF = TxtLogradouroFuncionario.getText();
-         f.setLogradouro(LF);
-         
-         String NUMF;
-         NUMF = TxtNumeroFuncionario.getText();
-         f.setNumero(NUMF);
-         
-         String CF;
-         CF = TxtComplementoFuncionario.getText();
-         f.setComplemento(CF);
-         
-         String BF;
-         BF = TxtBairroFuncionario.getText();
-         f.setBairro(BF);
-         
-         String CIDF;
-         CIDF = TxtCidadeFuncionario.getText();
-         f.setCidade(CIDF);
-         
-         String EF;
-         EF = (String) CboEstadoFuncionario.getSelectedItem().toString();
-         f.setEstado(EF);
-         
-         String CEPF;
-         CEPF = TxtCepFuncionario.getText();
-         f.setCpf(CEPF);
-         
-         String SMF, SFF, SNEF;
-         SMF = RBmasculino.getSelectedIcon().toString();
-         SFF = RBfeminino.getSelectedIcon().toString();
-         SNEF = RBnaoEspecificado.getSelectedIcon().toString();
-         f.setSexo(SMF);
-         f.setSexo(SFF);
-         f.setSexo(SNEF);
-         
-         String CPFF;
-         CPFF = TxtCpfFuncionario.getText();
-         f.setCpf(CPFF);
-         
-         String RGF;
-         RGF = TxtRgFuncionario.getText();
-         f.setRg(RGF);
-         
-         String DF;
-         DF = TxtdtNascimentoFuncionario.getText();
-         f.setDatadenascimento(DF);
-         
-         String EMF;
-         EMF = TxtEmailFuncionario.getText();
-         f.setEmail(EMF);
-         
-         String TF;
-         TF = TxtTelefoneFuncionario.getText();
-         f.setTelefone(TF);
-         
-         String CELF;
-         CELF = TxtCelularFuncionario.getText();
-         f.setCelular(CELF);
-         
-         Double SAF;
-         SAF = Double.parseDouble(TxtSalarioFuncionario.getText());
-         f.setSalario(SAF);
-         
-         String CAF;
-         CAF = TxtCelularFuncionario.getText();
-         f.setCargo(CAF);
-         
-         String SEF;
-         SEF = TxtSetorFuncionario.getText();
-         f.setSetor(SEF);
-         
-         
-         
+        int IDF;
+        IDF = Integer.parseInt(TxtIdFuncionario.getText());
+        f.setId_funcionario(IDF);
+
+        String NF;
+        NF = TxtNomeFuncionario.getText();
+        f.setNome(NF);
+
+        String LF;
+        LF = TxtLogradouroFuncionario.getText();
+        f.setLogradouro(LF);
+
+        String NUMF;
+        NUMF = TxtNumeroFuncionario.getText();
+        f.setNumero(NUMF);
+
+        String CF;
+        CF = TxtComplementoFuncionario.getText();
+        f.setComplemento(CF);
+
+        String BF;
+        BF = TxtBairroFuncionario.getText();
+        f.setBairro(BF);
+
+        String CIDF;
+        CIDF = TxtCidadeFuncionario.getText();
+        f.setCidade(CIDF);
+
+        String EF;
+        EF = (String) CboEstadoFuncionario.getSelectedItem().toString();
+        f.setEstado(EF);
+
+        String CEPF;
+        CEPF = TxtCepFuncionario.getText();
+        f.setCep(CEPF);
+
+       
+        if (RBmasculino.isSelected()) {
+            f.setSexo("M");
+        }
+        if (RBfeminino.isSelected()) {
+            f.setSexo("F");
+        }
+        if (RBnaoEspecificado.isSelected()) {
+            f.setSexo("NE");
+        }
+
+        String CPFF;
+        CPFF = TxtCpfFuncionario.getText();
+        f.setCpf(CPFF);
+
+        String RGF;
+        RGF = TxtRgFuncionario.getText();
+        f.setRg(RGF);
+
+        String DF;
+        DF = TxtdtNascimentoFuncionario.getText();
+        f.setDatadenascimento(DF);
+
+        String EMF;
+        EMF = TxtEmailFuncionario.getText();
+        f.setEmail(EMF);
+
+        String TF;
+        TF = TxtTelefoneFuncionario.getText();
+        f.setTelefone(TF);
+
+        String CELF;
+        CELF = TxtCelularFuncionario.getText();
+        f.setCelular(CELF);
+
+        Double SAF;
+        SAF = Double.parseDouble(TxtSalarioFuncionario.getText());
+        f.setSalario(SAF);
+
+        String CAF;
+        CAF = TxtCargoFuncionario.getText();
+        f.setCargo(CAF);
+
+        String SEF;
+        SEF = TxtSetorFuncionario.getText();
+        f.setSetor(SEF);
+
         try {
             s.adicionarf(f);
-             JOptionPane.showMessageDialog(null, "Funcionario adicionado com sucesso !!!");
-            
+            JOptionPane.showMessageDialog(null, "Funcionario adicionado com sucesso !!!");
+
         } catch (Exception ex) {
-             JOptionPane.showMessageDialog(null, "Falha ao adicionar funcionario !!!");
+            JOptionPane.showMessageDialog(null, "Falha ao adicionar funcionario !!!");
             Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }//GEN-LAST:event_BtnCadastrarActionPerformed
 
     private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
- Funcionario FuncionarioRemover = new Funcionario();
-   FuncionarioRemover.setId_funcionario(20);
-        try {        
+        Funcionario FuncionarioRemover = new Funcionario();
+        long id = Long.valueOf( TxtIdFuncionario.getText() );
+        FuncionarioRemover.setId_funcionario(id);
+        try {
             s.removerf(FuncionarioRemover);
+            JOptionPane.showMessageDialog(null, "Funcionario Deletado com sucesso !!!");
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao Deletar !!!");
             Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BtnDeletarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+
+        TxtIdFuncionario.setText(String.valueOf(f.getId_funcionario()));
+        TxtNomeFuncionario.setText(f.getNome());
+        TxtLogradouroFuncionario.setText(f.getLogradouro());
+        TxtNumeroFuncionario.setText(f.getNumero());
+        TxtComplementoFuncionario.setText(f.getComplemento());
+        TxtBairroFuncionario.setText(f.getBairro());
+        TxtCidadeFuncionario.setText(f.getCidade());
+        CboEstadoFuncionario.setSelectedItem(f.getEstado());
+        TxtCepFuncionario.setText(f.getCep());
+        TxtCpfFuncionario.setText(f.getCpf());
+        TxtRgFuncionario.setText(f.getRg());
+        TxtdtNascimentoFuncionario.setText(f.getDatadenascimento());
+        TxtEmailFuncionario.setText(f.getEmail());
+        TxtTelefoneFuncionario.setText(f.getTelefone());
+        TxtCelularFuncionario.setText(f.getCelular());
+        TxtSalarioFuncionario.setText(String.valueOf(f.getSalario()));
+        TxtCargoFuncionario.setText(f.getCargo());
+        TxtSetorFuncionario.setText(f.getSetor());
+     
+        
         try {
-            for(Funcionario f : s.buscarTodosf()){
-                JOptionPane.showMessageDialog(f);
-            }
+            s.buscarf((int) f.getId_funcionario());
         } catch (Exception ex) {
             Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+     
     }//GEN-LAST:event_BtnBuscarActionPerformed
+
+    private void BtnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtualizarActionPerformed
+        int IDFA;
+        IDFA = Integer.parseInt(TxtIdFuncionario.getText());
+        f.setId_funcionario(IDFA);
+
+        String NFA;
+        NFA = TxtNomeFuncionario.getText();
+        f.setNome(NFA);
+
+        String LFA;
+        LFA = TxtLogradouroFuncionario.getText();
+        f.setLogradouro(LFA);
+
+        String NUMFA;
+        NUMFA = TxtNumeroFuncionario.getText();
+        f.setNumero(NUMFA);
+
+        String CFA;
+        CFA = TxtComplementoFuncionario.getText();
+        f.setComplemento(CFA);
+
+        String BFA;
+        BFA = TxtBairroFuncionario.getText();
+        f.setBairro(BFA);
+
+        String CIDFA;
+        CIDFA= TxtCidadeFuncionario.getText();
+        f.setCidade(CIDFA);
+
+        String EFA;
+        EFA = (String) CboEstadoFuncionario.getSelectedItem().toString();
+        f.setEstado(EFA);
+
+        String CEPFA;
+        CEPFA = TxtCepFuncionario.getText();
+        f.setCep(CEPFA);
+
+       
+        if (RBmasculino.isSelected()) {
+            f.setSexo("M");
+        }
+        if (RBfeminino.isSelected()) {
+            f.setSexo("F");
+        }
+        if (RBnaoEspecificado.isSelected()) {
+            f.setSexo("NE");
+        }
+
+        String CPFFA;
+        CPFFA = TxtCpfFuncionario.getText();
+        f.setCpf(CPFFA);
+
+        String RGFA;
+        RGFA = TxtRgFuncionario.getText();
+        f.setRg(RGFA);
+
+        String DFA;
+        DFA = TxtdtNascimentoFuncionario.getText();
+        f.setDatadenascimento(DFA);
+
+        String EMFA;
+        EMFA = TxtEmailFuncionario.getText();
+        f.setEmail(EMFA);
+
+        String TFA;
+        TFA = TxtTelefoneFuncionario.getText();
+        f.setTelefone(TFA);
+
+        String CELFA;
+        CELFA = TxtCelularFuncionario.getText();
+        f.setCelular(CELFA);
+
+        Double SAFA;
+        SAFA = Double.parseDouble(TxtSalarioFuncionario.getText());
+        f.setSalario(SAFA);
+
+        String CAFA;
+        CAFA = TxtCargoFuncionario.getText();
+        f.setCargo(CAFA);
+
+        String SEFA;
+        SEFA = TxtSetorFuncionario.getText();
+        f.setSetor(SEFA);
+
+        
+        try {
+            s.atualizarf(f);
+             JOptionPane.showMessageDialog(null, "Funcionario Atualizado com sucesso !!!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao atualizar !!!");
+            Logger.getLogger(Cadastro_funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BtnAtualizarActionPerformed
+
+    private void BtnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVoltarActionPerformed
+        new Home().setVisible(true); this.dispose();
+    }//GEN-LAST:event_BtnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -806,6 +945,7 @@ public class Cadastro_funcionario extends javax.swing.JFrame {
     private javax.swing.JButton BtnDeletar;
     private javax.swing.JButton BtnLimpar;
     private javax.swing.JButton BtnSair;
+    private javax.swing.JButton BtnVoltar;
     private javax.swing.JComboBox<String> CboEstadoFuncionario;
     private javax.swing.ButtonGroup GrpSexoFuncionario;
     private javax.swing.JRadioButton RBfeminino;

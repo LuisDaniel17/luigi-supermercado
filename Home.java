@@ -5,6 +5,10 @@
  */
 package luigi.s_supermercado;
 
+import java.sql.SQLException;
+import com.sun.istack.internal.logging.Logger;
+import java.util.logging.Level;
+
 /**
  *
  * @author luisd
@@ -32,6 +36,9 @@ public class Home extends javax.swing.JFrame {
         BtnProduto = new javax.swing.JButton();
         BtnSair = new javax.swing.JButton();
         BtnVenda = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(400, 200));
@@ -51,6 +58,11 @@ public class Home extends javax.swing.JFrame {
         BtnProduto.setBackground(new java.awt.Color(0, 255, 0));
         BtnProduto.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         BtnProduto.setText("Produto");
+        BtnProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProdutoActionPerformed(evt);
+            }
+        });
 
         BtnSair.setBackground(new java.awt.Color(255, 0, 0));
         BtnSair.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -63,41 +75,83 @@ public class Home extends javax.swing.JFrame {
 
         BtnVenda.setBackground(new java.awt.Color(0, 255, 0));
         BtnVenda.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        BtnVenda.setText("Venda");
+        BtnVenda.setText("Caixa");
+        BtnVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVendaActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(7, 7, 7, 7, new java.awt.Color(51, 255, 51)), javax.swing.BorderFactory.createMatteBorder(7, 7, 7, 7, new java.awt.Color(0, 51, 255))));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel2.setText("Luigi's");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel3.setText("Supermercado");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel2)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel3)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(64, 64, 64))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(87, 87, 87))
             .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnFuncionario)
-                    .addComponent(BtnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(176, 176, 176)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnFuncionario)
+                            .addComponent(BtnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(176, 176, 176)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,8 +162,16 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSairActionPerformed
 
     private void BtnFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFuncionarioActionPerformed
-    
+        new Cadastro_funcionario().setVisible(true); this.dispose();
     }//GEN-LAST:event_BtnFuncionarioActionPerformed
+
+    private void BtnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProdutoActionPerformed
+        new Cadastro_produto().setVisible(true); this.dispose();
+    }//GEN-LAST:event_BtnProdutoActionPerformed
+
+    private void BtnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVendaActionPerformed
+        new Caixa().setVisible(true); this.dispose();
+    }//GEN-LAST:event_BtnVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,5 +214,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton BtnSair;
     private javax.swing.JButton BtnVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
